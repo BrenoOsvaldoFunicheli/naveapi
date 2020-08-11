@@ -1,0 +1,8 @@
+Django==3.0.6
+psycopg2==2.8.5
+djangorestframework
+mysqlclient==1.3.12
+django-mysql==2.2.0
+
+
+#  cat backup.sql | docker exec -i 9a0d8ad3798b3598bb9c6da58ba39c43eabb77793e087abe34bc6849cf9bc5a8  /usr/bin/mysql -u root --password=MySql2019! testedb
