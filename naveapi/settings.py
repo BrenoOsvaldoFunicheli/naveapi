@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'core.apps.CoreConfig',
+    'projects.apps.ProjectsConfig',
 ]
 
 MIDDLEWARE = [
@@ -69,15 +72,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'naveapi.wsgi.application'
 
+# setting the permission
+
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1']
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.db.backends.postgresql', 'NAME': 'nave', 'USER': 'postgres', 'PASSWORD': 'root', 'HOST': 'db', 'PORT': 5432
+    },
 }
 
 

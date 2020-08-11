@@ -4,7 +4,7 @@ version: '3'
 services:
     app:
       build: .
-      container_name: iniciando-django-app
+      container_name: nave-app
       command: python manage.py runserver 0.0.0.0:8002
       volumes:
         - .:/home/django/app
@@ -13,31 +13,21 @@ services:
       depends_on:
         - db
 
-    mysqlsrv:
-      image: mysql:5.7
-      environment:
-        MYSQL_ROOT_PASSWORD: "MySql2019!"
-        MYSQL_DATABASE: "testedb"
-      ports:
-        - "3307:3306"
-      volumes:
-        - eco:/var/lib/mysql
 
     db:
       image: postgres
-      container_name: iniciando-django-db
+      container_name: nave-db
       tty:  true
       environment:
-        - POSTGRES_DB=iniciando_django
+        - POSTGRES_DB=nave
         - POSRGRES_USER=postgres
         - POSTGRES_PASSWORD=root
       volumes:
-        - iniciando-django-pgdata:/var/lib/postgresql/data
+        - nave-pgdata:/var/lib/postgresql/data
     
     
 
 volumes:
-  iniciando-django-pgdata:
+  nave-pgdata:
     external: true
-  eco:
-    external: true
+ 
