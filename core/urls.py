@@ -13,12 +13,21 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+# needed imports to django rest framework
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework import routers
 
+# my imported views
+from core.api.viewsets import NaverViewSet
+
+# it's defining the routers to api access
+router = routers.DefaultRouter()
+router.register(r'navers', NaverViewSet)
+
+#   paths to app access
+#   here, are some paths to app developed
+#   also are all routers that are defined by access api versions
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('core/', include('core.urls')),
-    path('projects/', include('projects.urls')),
-    
+    path('api/v1/', include(router.urls)),
 ]
