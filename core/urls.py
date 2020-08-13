@@ -18,6 +18,9 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 
+#   jwt imports
+from rest_framework_simplejwt import views as jwt_views
+
 # my imported views
 from core.api.viewsets import NaverViewSet
 
@@ -30,4 +33,8 @@ router.register(r'navers', NaverViewSet, basename='navers')
 #   also are all routers that are defined by access api versions
 urlpatterns = [
     path('api/v1/', include(router.urls)),
+    path('api/v1/token/', jwt_views.TokenObtainPairView.as_view(),
+         name='token_obtain_pair'),
+    path('api/v1/token/refresh/', jwt_views.TokenRefreshView.as_view(),
+         name='token_refresh'),
 ]

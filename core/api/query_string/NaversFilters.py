@@ -4,6 +4,13 @@ from core.models import Naver
 class NaversFilters:
 
     def __init__(self, params):
+        """
+            Parameters
+            ----------
+            params : QuerySet
+                     Description of parameter `x`.
+        """
+
         self.queryset = Naver.objects
         self.name = params.get('name', None)
         self.n_params = 0
