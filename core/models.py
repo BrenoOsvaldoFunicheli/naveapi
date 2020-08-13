@@ -2,6 +2,7 @@ from django.db import models
 
 #   needed imports
 from projects.models import Project
+from django.contrib.auth.models import User
 # Create your models here.
 
 
@@ -22,6 +23,8 @@ class Naver(models.Model):
     admission_date = models.DateField(null=True, blank=True)
     birthdate = models.DateField(null=True, blank=True)
     projects = models.ManyToManyField(Project)
+    creator = models.ForeignKey(
+        User, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

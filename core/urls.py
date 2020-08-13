@@ -23,7 +23,7 @@ from core.api.viewsets import NaverViewSet
 
 # it's defining the routers to api access
 router = routers.DefaultRouter()
-router.register(r'navers', NaverViewSet)
+router.register(r'navers', NaverViewSet, basename='navers')
 
 #   paths to app access
 #   here, are some paths to app developed
