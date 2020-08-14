@@ -1,11 +1,27 @@
-#   restframework's imports
+#   my models that project uses
+from core.models import Naver, Project, Technologie
+
+#   rest framework's dependecies
 from rest_framework.serializers import ModelSerializer
 
-#   my models that project uses
-from core.models import Naver, Project
 
-#   my serializers to implement Nested Relations
-from projects.api.serializers import ProjectSerializer
+#   external serializer, that need to setting nested fields
+# from core.api.serializers import NaverSerializer
+
+
+class ProjectSerializer(ModelSerializer):
+
+    class Meta:
+        model = Project
+        fields = ['id', 'name']
+
+class DetailProjectSerializer(ModelSerializer):
+
+    # navers = NaverSerializer
+
+    class Meta:
+        model = Project
+        fields = ['id', 'name', 'navers']
 
 
 class NaverSerializer(ModelSerializer):

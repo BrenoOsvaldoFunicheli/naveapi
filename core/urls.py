@@ -22,11 +22,12 @@ from rest_framework import routers
 from rest_framework_simplejwt import views as jwt_views
 
 # my imported views
-from core.api.viewsets import NaverViewSet
+from core.api.viewsets import NaverViewSet, ProjectViewSet
 
 # it's defining the routers to api access
 router = routers.DefaultRouter()
 router.register(r'navers', NaverViewSet, basename='navers')
+router.register(r'projects', ProjectViewSet, basename='project')
 
 #   paths to app access
 #   here, are some paths to app developed
