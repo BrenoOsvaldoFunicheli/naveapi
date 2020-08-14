@@ -6,20 +6,24 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
+class JobRole(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.CharField(max_length=500)
+
+    def __str__(self):
+        return self.name
+
+
 class Naver(models.Model):
-    JOB_ROLES = (
-        ('dev', 'Desenvolvedor'),
-        ('dba', 'Adminstrdor de Banco de Dados'),
-        ('fte', 'Desenvolvedor Front-End')
-    )
 
     STATUS = (
         ('A', 'Actived'),
         ('D', 'Deleted')
     )
+
     name = models.CharField(max_length=100)
-    job_role = models.CharField(max_length=3, choices=JOB_ROLES, default='A')
-    status = models.CharField(max_length=1, choices=STATUS, default='dev')
+    job_role = models.ForeignKey(JobRole, null=True, on_delete=models.SET_NULL)
+    status = models.CharField(max_length=1, choices=STATUS, default='A')
     admission_date = models.DateField(null=True, blank=True)
     birthdate = models.DateField(null=True, blank=True)
     projects = models.ManyToManyField(Project)
@@ -28,3 +32,8 @@ class Naver(models.Model):
 
     def __str__(self):
         return self.name
+
+    @property
+    def job(self):
+        # return str(self.pk)
+        return str(self.job_role)#JobRole.objects.get(pk=self.job_role).name

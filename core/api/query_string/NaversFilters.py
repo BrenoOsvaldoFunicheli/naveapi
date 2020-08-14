@@ -13,6 +13,7 @@ class NaversFilters:
 
         self.queryset = Naver.objects
         self.name = params.get('name', None)
+        self.params=params
         self.n_params = 0
 
     def get_name(self):
@@ -26,6 +27,7 @@ class NaversFilters:
     def get_objects(self):
         self.process()
 
+        print(self.params)
         if self.n_params > 0:
             return self.queryset
         else:
