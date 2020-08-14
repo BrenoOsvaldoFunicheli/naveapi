@@ -8,14 +8,14 @@ from rest_framework.permissions import IsAuthenticated
 
 #   important class
 from projects.models import Project
-from .serializers import ProjectSerializer
+from .serializers import ProjectSerializer, DetailProjectSerializer
 
 
 class ProjectViewSet(ModelViewSet):
     """
         Class to handle the serializer and data
     """
-    permission_classes = (IsAuthenticated, )
+    # permission_classes = (IsAuthenticated, )
     serializer_class = ProjectSerializer
     filter_backends = (DjangoFilterBackend,)
     filter_fields = ('name', )
@@ -23,9 +23,11 @@ class ProjectViewSet(ModelViewSet):
     def get_queryset(self):
         return Project.objects.all()
 
-    # @action(methods=['get'], detail=True)
-    # def search_projects(self, request, pk=None):
-    #     pass
+    def get_serializer_class(self):
+        if self.action == 'retrieve':
+            return DetailProjectSerializer
+        else:
+            return ProjectSerializer
 
     
 

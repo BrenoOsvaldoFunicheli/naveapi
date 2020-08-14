@@ -9,6 +9,7 @@ from projects.api.serializers import ProjectSerializer
 
 
 class NaverSerializer(ModelSerializer):
+
     """
         Serializer that will be provid serialization
     """

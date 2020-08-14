@@ -44,7 +44,6 @@ class NaverViewSet(ModelViewSet):
     #     return Response(serializer.data)
 
     def get_serializer_class(self):
-        print(self.action)
         if self.action == 'retrieve':
             return DetailNaverSerializer
         else:
