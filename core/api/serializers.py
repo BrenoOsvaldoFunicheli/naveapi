@@ -1,19 +1,21 @@
 #   my models that project uses
-from core.models import Naver, Project, Technologie
+from core.models import Naver, Project, Technologie, JobRole
 
 #   rest framework's dependecies
 from rest_framework.serializers import ModelSerializer
-
-
-#   external serializer, that need to setting nested fields
-# from core.api.serializers import NaverSerializer
-
 
 class ProjectSerializer(ModelSerializer):
 
     class Meta:
         model = Project
         fields = ['id', 'name']
+
+
+class JobSerializer(ModelSerializer):
+    class Meta:
+        model = JobRole
+        fields = ['id', 'name', 'description']
+
 
 class NaverSerializer(ModelSerializer):
 
@@ -35,7 +37,7 @@ class DetailNaverSerializer(ModelSerializer):
     class Meta:
         model = Naver
         fields = (
-            'id', 'name', 'birthdate',  'admission_date',  'job', 'projects'
+            'id', 'name', 'birthdate',  'admission_date', 'end_date', 'job', 'projects'
         )
 
 

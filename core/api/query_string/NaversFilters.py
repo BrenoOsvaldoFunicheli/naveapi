@@ -9,7 +9,7 @@ class NaversFilters:
             Parameters
             ----------
             params : QuerySet
-                     Description of parameter `x`.
+                     Description .
         """
 
         self.queryset = Naver.objects
