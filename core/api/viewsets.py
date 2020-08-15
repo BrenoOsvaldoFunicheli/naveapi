@@ -21,7 +21,7 @@ class NaverViewSet(ModelViewSet):
     """
 
     # serializer_class = NaverSerializer
-
+    
     def get_queryset(self):
         """
             Parameters

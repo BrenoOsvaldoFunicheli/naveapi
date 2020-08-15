@@ -15,15 +15,6 @@ class ProjectSerializer(ModelSerializer):
         model = Project
         fields = ['id', 'name']
 
-class DetailProjectSerializer(ModelSerializer):
-
-    # navers = NaverSerializer
-
-    class Meta:
-        model = Project
-        fields = ['id', 'name', 'navers']
-
-
 class NaverSerializer(ModelSerializer):
 
     """
@@ -46,3 +37,11 @@ class DetailNaverSerializer(ModelSerializer):
         fields = (
             'id', 'name', 'birthdate',  'admission_date',  'job', 'projects'
         )
+
+
+class DetailProjectSerializer(ModelSerializer):
+    naver_set = NaverSerializer(many=True)
+
+    class Meta:
+        model = Project
+        fields = ['id', 'name', 'naver_set']
