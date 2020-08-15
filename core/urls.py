@@ -23,12 +23,14 @@ from rest_framework_simplejwt import views as jwt_views
 
 # my imported views
 from core.api.viewsets import NaverViewSet, ProjectViewSet, JobViewSet
+from users.api.viewsets import UserSerializer
 
 # it's defining the routers to api access
 router = routers.DefaultRouter()
 router.register(r'navers', NaverViewSet, basename='navers')
 router.register(r'projects', ProjectViewSet, basename='project')
 router.register(r'job_role', JobViewSet, basename='job_role')
+# router.register(r'user', UserSerializer, basename='users')
 
 #   paths to app access
 #   here, are some paths to app developed

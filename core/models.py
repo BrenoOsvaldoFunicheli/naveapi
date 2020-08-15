@@ -3,7 +3,6 @@ from django.db import models
 #   needed imports
 from django.contrib.auth.models import User
 
-
 # Create your models here.
 
 
@@ -62,6 +61,7 @@ class NaverDateQuerySet(models.QuerySet):
     def less_than(self, days):
         return self.raw('SELECT * FROM core_naver WHERE COALESCE(end_date,CURRENT_DATE)-admission_date < '+days)
 
+
 class NaverDateManager(models.Manager):
     def get_queryset(self):
         return NaverDateQuerySet(self.model, using=self._db)
@@ -74,6 +74,7 @@ class NaverDateManager(models.Manager):
 
     def less_than(self, days):
         return self.get_queryset().less_than()
+
 
 class Naver(models.Model):
 
