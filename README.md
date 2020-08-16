@@ -6,15 +6,15 @@ A complete implementation of RESTful API to store and consume some structures th
 
 ## Sections
 
-* :snake: [Patterns](#patterns-used) (optional)
-* :blue_book: [Requirements and Model](#blue_book-creating-a-project)
+* :scroll: [Patterns](#snake-patterns) (optional)
+* :blue_book: [Requirements and Model](#blue_book-requirements-and-model)
 * :page_with_curl: [Building App](#page_with_curl-creating-an-app)
-* :page_with_curl: [Registry on API](#tv-creating-a-view)
-* :art: [Authentication](#art-creating-a-template)
+* :unlock: [Registry on API](#tv-creating-a-view)
+* :key: [Authentication](#art-creating-a-template)
 * :ticket: [API Consuming](#ticket-creating-a-model)
 * :postbox: [Testing](#postbox-creating-model-objects-and-queries)
 
-## :snake: Patterns
+## :scroll: Patterns
 
 In order to create the real stage API to consuming I follow some best pratice and concepts of RESTful APIs must has, beside this, I provide the detailed documentation about API with the postman to test endpoints.
 
@@ -61,3 +61,11 @@ In order to attendant the previous requirements, I make model to store data.
 ![alt text](https://github.com/BrenoOsvaldoFunicheli/naveapi/blob/conversion/documentation/DER.png?raw=true)
 
 ## :page_with_curl: Building App
+
+## :unlock: Registry on API
+
+## :key: Authentication
+
+## :ticket: API Consuming
+
+## :postbox: Testing
