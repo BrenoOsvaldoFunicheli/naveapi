@@ -37,19 +37,25 @@ The system consists of a creator of navedex's API, where you can register using 
 * User tracked: In order to provide some security and isolation of registry all user only have access to own registry with exception of the dad tables, such as tecnologies and jobs.
 
 * Navers Endpoint
-    * Create: create new navers
-    * List: return all values
-    * Retrive: return the specific
-    * Update: alter navers
-    * Delete: delete the registry
-    * filters: Some user can filter search by naver name, company time or job
-    * observation: all registry of this model only can accessed by his own owner and this data need authentication.
+    - Create: create new navers
+    - List: return all values
+    - Retrive: return the specific
+    - Update: alter navers
+    - Delete: delete the registry
+    - filters: Some user can filter search by naver name, company time or job
+    - observation: all registry of this model only can accessed by his own owner and this data need authentication.
 
 * Projects Endpoint
-    * Create: create new projects
-    * List: return all values
-    * Retrive: return the specific
-    * Update: alter project by JSON information
-    * Delete: delete the registry
-    * filters: Some user can filter search by project name
-    * observation: all registry of this model only can accessed by his own owner and this data need authentication.
+    - Create: create new projects
+    - List: return all values
+    - Retrive: return the specific
+    - Update: alter project by JSON information
+    - Delete: delete the registry
+    - filters: Some user can filter search by project name
+    - observation: all registry of this model only can accessed by his own owner and this data need authentication.
+
+## Model
+
+In order to attendant the previous requirements, I make model to store data.
+
+![alt text](https://github.com/BrenoOsvaldoFunicheli/naveapi/blob/conversion/documentation/DER.png?raw=true)
