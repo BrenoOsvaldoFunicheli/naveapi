@@ -10,6 +10,7 @@ A complete implementation of RESTful API to store and consume some structures th
 * :blue_book: [Requirements and Model](#blue_book-creating-a-project)
 * :page_with_curl: [Building App](#page_with_curl-creating-an-app)
 * :tv: [Registry on API](#tv-creating-a-view)
+<<<<<<< HEAD
 * :art: [Authentication](#art-creating-a-template)
 * :ticket: [API Consuming](#ticket-creating-a-model)
 * :postbox: [Testing](#postbox-creating-model-objects-and-queries)
@@ -51,4 +52,3 @@ The system consists of a creator of navedex's API, where you can register using 
     * Delete: delete the registry
 
     * observation: all registry of this model only can accessed by his own owner and this data need authentication.
-
