@@ -6,12 +6,12 @@ A complete implementation of RESTful API to store and consume some structures th
 
 ## Sections
 
-* :scroll: [Patterns](#snake-patterns) (optional)
+* :scroll: [Patterns](#scroll-patterns) (optional)
 * :blue_book: [Requirements and Model](#blue_book-requirements-and-model)
-* :wrench: [Building App](#page_with_curl-creating-an-app)
-* :key: [Authentication](#art-creating-a-template)
-* :ticket: [API Consuming](#ticket-creating-a-model)
-* :postbox: [Testing](#postbox-creating-model-objects-and-queries)
+* :wrench: [Building App](#wrench-building-app)
+* :key: [Authentication](#key-authentication)
+* :ticket: [API Consuming](#ticket-api-consuming)
+* :postbox: [Testing](#postbox-testing)
 
 ## :scroll: Patterns
 
@@ -76,6 +76,8 @@ To install docker follow the instructions in the links below depending on your o
 * MacOS: https://docs.docker.com/docker-for-mac/install/
 * Windows: https://docs.docker.com/docker-for-windows/install/
 
+#### Steps to Set Up
+
 For API build you need some simple steps, download the this repository with the follow command:
 
 ``` linux
@@ -120,7 +122,7 @@ CREATE DATABASE nave;
 
 ```
 
-Finally, you can't press crtl+C to exit database and set it up again, with this you'll have the API running.
+Finally, you can't press CTRL+C to exit database and set it up again with the docker-compose up, with this you'll have the API running.
 
 ## :key: Authentication
 
