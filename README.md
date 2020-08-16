@@ -14,7 +14,7 @@ A complete implementation of RESTful API to store and consume some structures th
 * :ticket: [API Consuming](#ticket-creating-a-model)
 * :postbox: [Testing](#postbox-creating-model-objects-and-queries)
 
-## :snake: [Patterns](optional)
+## :snake: Patterns
 
 In order to create the real stage API to consuming I follow some best pratice and concepts of RESTful APIs must has, beside this, I provide the detailed documentation about API with the postman to test endpoints.
 
@@ -26,7 +26,7 @@ In order to create the real stage API to consuming I follow some best pratice an
 
 * Authentication: I make the API visualization with the JWT tokens to Authentication on each endpoints
 
-## :blue_book: [Requirements and Model](#blue_book-creating-a-project)
+## :blue_book: Requirements and Model
 
 The system consists of a creator of navedex's API, where you can register using email and password, and then when logging in you will have access to your browsers' database, with information such as: names, birth data, loads, company time and projects who participated.
 
@@ -54,8 +54,10 @@ The system consists of a creator of navedex's API, where you can register using 
     - filters: Some user can filter search by project name
     - observation: all registry of this model only can accessed by his own owner and this data need authentication.
 
-## Model
+### Model
 
 In order to attendant the previous requirements, I make model to store data.
 
 ![alt text](https://github.com/BrenoOsvaldoFunicheli/naveapi/blob/conversion/documentation/DER.png?raw=true)
+
+## :page_with_curl: Building App
