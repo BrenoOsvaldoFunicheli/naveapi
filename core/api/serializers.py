@@ -4,6 +4,7 @@ from core.models import Naver, Project, Technologie, JobRole
 #   rest framework's dependecies
 from rest_framework.serializers import ModelSerializer
 
+
 class ProjectSerializer(ModelSerializer):
 
     class Meta:
@@ -15,6 +16,12 @@ class JobSerializer(ModelSerializer):
     class Meta:
         model = JobRole
         fields = ['id', 'name', 'description']
+
+
+class TecnologiesSerializer(ModelSerializer):
+    class Meta:
+        model = Technologie
+        fields = ['id', 'name']
 
 
 class NaverSerializer(ModelSerializer):

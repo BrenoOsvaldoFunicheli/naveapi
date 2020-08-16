@@ -4,7 +4,7 @@ import datetime
 
 class NaversFilters:
 
-    def __init__(self, params):
+    def __init__(self, user, params):
         """
             Parameters
             ----------
@@ -15,6 +15,7 @@ class NaversFilters:
         self.queryset = Naver.objects
         self.name = params.get('name', None)
         self.job = params.get('job', None)
+        self.user = user
         self.company_time_eq = params.get('company_time_equal', None)
         self.company_time_gt = params.get('company_time_more_than', None)
         self.company_time_lt = params.get('company_time_less_than', None)
@@ -57,6 +58,6 @@ class NaversFilters:
         self.process()
 
         if self.n_params > 0:
-            return self.queryset
+            return self.queryset.filter(creator=self.user.id)
         else:
-            return self.queryset.all()
+            return self.queryset.filter(creator=self.user.id)
