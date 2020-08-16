@@ -9,8 +9,7 @@ A complete implementation of RESTful API to store and consume some structures th
 * :snake: [Patterns](#patterns-used) (optional)
 * :blue_book: [Requirements and Model](#blue_book-creating-a-project)
 * :page_with_curl: [Building App](#page_with_curl-creating-an-app)
-* :tv: [Registry on API](#tv-creating-a-view)
-<<<<<<< HEAD
+* :page_with_curl: [Registry on API](#tv-creating-a-view)
 * :art: [Authentication](#art-creating-a-template)
 * :ticket: [API Consuming](#ticket-creating-a-model)
 * :postbox: [Testing](#postbox-creating-model-objects-and-queries)
@@ -35,13 +34,15 @@ The system consists of a creator of navedex's API, where you can register using 
 
 * Authentication: The user registry himself with the password and email and can be get the token to access any endpoint to create and delete his registry.
 
+* User tracked: In order to provide some security and isolation of registry all user only have access to own registry with exception of the dad tables, such as tecnologies and jobs.
+
 * Navers Endpoint
     * Create: create new navers
     * List: return all values
     * Retrive: return the specific
     * Update: alter navers
     * Delete: delete the registry
-
+    * filters: Some user can filter search by naver name, company time or job
     * observation: all registry of this model only can accessed by his own owner and this data need authentication.
 
 * Projects Endpoint
@@ -50,5 +51,5 @@ The system consists of a creator of navedex's API, where you can register using 
     * Retrive: return the specific
     * Update: alter project by JSON information
     * Delete: delete the registry
-
+    * filters: Some user can filter search by project name
     * observation: all registry of this model only can accessed by his own owner and this data need authentication.
