@@ -12,6 +12,7 @@ A complete implementation of RESTful API to store and consume some structures th
 * :wrench: [Building App](#wrench-building-app)
 * :key: [Authentication](#key-authentication)
 * :ticket: [API Consuming](#ticket-api-consuming)
+* :exclamation: [Difficulty](#exclamation-difficulty)
 
 ## :scroll: Patterns
 
@@ -178,3 +179,18 @@ So when you access token through the url [uri]/api/v1/[resource] you can get two
 ## :ticket: API Consuming
 
 The API consuming were detailed on the postman collection, that implements all steps to consuming and explain some steps to use. The ordering of steps need to be follow, because you need authentication before consuming. The collection link is https://documenter.getpostman.com/view/8382418/T1LQfk9N
+
+## :exclamation: Difficulty
+
+During the construction of the API I tried to carry out all the requirements, but the only problem was during the construction of the tests, where finding that the fact of using the django user class for authentication causes problems in using the jwt token, therefore, to use functions effectively, it is necessary to create a super user from the manage.py file.
+However, user creation has already been implemented, authentication is not really working with ordinary users. The partial solution is to use django to be able to test my app, however, the solution is to create an external class for the user and change the reference of the settings that informs which class is the user.
+However,
+
+### Example of the code to create super user
+
+```linux
+
+python manage.py createsuperuser --username django --email django@django.com
+put password
+
+```
