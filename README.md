@@ -183,8 +183,8 @@ The API consuming were detailed on the postman collection, that implements all s
 ## :exclamation: Difficulty
 
 During the construction of the API I tried to carry out all the requirements, but the only problem was during the construction of the tests, where finding that the fact of using the django user class for authentication causes problems in using the jwt token, therefore, to use functions effectively, it is necessary to create a super user from the manage.py file.
-However, user creation has already been implemented, authentication is not really working with ordinary users. The partial solution is to use django to be able to test my app, however, the solution is to create an external class for the user and change the reference of the settings that informs which class is the user.
-However,
+However, user creation has already been implemented, authentication is not really working with ordinary users. The partial solution is to use django super user to be able to test my app, however, the solution is to create an external class for the user and change the reference of the settings that informs which class is the user.
+
 
 ### Example of the code to create super user
 
