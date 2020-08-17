@@ -25,12 +25,15 @@ class Technologie(models.Model):
 
 
 class Project(models.Model):
+    #   project status,
+    #   this information show the current state of the single project
     STATUS = (
         ('C', 'in-progress'),
         ('P', 'paused'),
         ('F', 'finished'),
     )
 
+    # status of the registry, that provide stored delete data
     REGISTER_STATUS = (
         ('A', 'Actived'),
         ('D', 'Deleted')
@@ -52,28 +55,28 @@ class Project(models.Model):
 
 
 class NaverDateQuerySet(models.QuerySet):
-    def more_than(self, days):
-        return self.raw('SELECT * FROM core_naver WHERE COALESCE(end_date,CURRENT_DATE)-admission_date > '+days)
+    def more_than(self, user, days):
+        return self.raw('SELECT * FROM core_naver WHERE COALESCE(end_date,CURRENT_DATE)-admission_date > '+str(days)+' and creator_id = '+str(user.id))
 
-    def equal(self, days):
-        return self.raw('SELECT * FROM core_naver WHERE COALESCE(end_date,CURRENT_DATE)-admission_date = '+days)
+    def equal(self, user, days):
+        return self.raw('SELECT * FROM core_naver WHERE COALESCE(end_date,CURRENT_DATE)-admission_date = '+str(days)+' and creator_id = '+str(user.id))
 
-    def less_than(self, days):
-        return self.raw('SELECT * FROM core_naver WHERE COALESCE(end_date,CURRENT_DATE)-admission_date < '+days)
+    def less_than(self, user, days):
+        return self.raw('SELECT * FROM core_naver WHERE COALESCE(end_date,CURRENT_DATE)-admission_date < '+str(days)+' and creator_id = '+str(user.id))
 
 
 class NaverDateManager(models.Manager):
     def get_queryset(self):
         return NaverDateQuerySet(self.model, using=self._db)
 
-    def more_than(self, days):
-        return self.get_queryset().more_than(days)
+    def more_than(self, user, days):
+        return self.get_queryset().more_than(user, days)
 
-    def equal(self, days):
-        return self.get_queryset().equal(days)
+    def equal(self, user, days):
+        return self.get_queryset().equal(user, days)
 
-    def less_than(self, days):
-        return self.get_queryset().less_than()
+    def less_than(self, user, days):
+        return self.get_queryset().less_than(user, days)
 
 
 class Naver(models.Model):

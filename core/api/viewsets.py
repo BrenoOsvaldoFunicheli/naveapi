@@ -21,7 +21,7 @@ from rest_framework.permissions import IsAuthenticated
 
 class NaverViewSet(ModelViewSet):
     """
-        Viewset that represents the naver access
+        Viewset that represents the naver Endpoint
     """
 
     permission_classes = (IsAuthenticated, )
@@ -153,17 +153,20 @@ class ProjectViewSet(ModelViewSet):
 
 
 class JobViewSet(ModelViewSet):
+    """
+        Class to show the Job Endpoint
+    """
 
-    permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAuthenticated, )  # authentication attribute
     serializer_class = JobSerializer
 
     def get_queryset(self):
         return JobRole.objects.all()
 
 
-class TecnologiesViewSet(ModelViewSet):
+class TechnologiesViewSet(ModelViewSet):
 
-    permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAuthenticated, )    # authentication attribute, remove this to open access 
     serializer_class = JobSerializer
 
     def get_queryset(self):
