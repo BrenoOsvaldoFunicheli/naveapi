@@ -1,8 +1,8 @@
 from django.db import models
 
 #   needed imports
-from projects.models import Project
 from django.contrib.auth.models import User
+
 # Create your models here.
 
 
@@ -14,26 +14,99 @@ class JobRole(models.Model):
         return self.name
 
 
-class Naver(models.Model):
+# Create your models here.
+class Technologie(models.Model):
 
+    name = models.CharField(max_length=100)
+    description = models.CharField(max_length=500)
+
+    def __str__(self):
+        return self.name
+
+
+class Project(models.Model):
+    #   project status,
+    #   this information show the current state of the single project
     STATUS = (
+        ('C', 'in-progress'),
+        ('P', 'paused'),
+        ('F', 'finished'),
+    )
+
+    # status of the registry, that provide stored delete data
+    REGISTER_STATUS = (
         ('A', 'Actived'),
         ('D', 'Deleted')
     )
 
     name = models.CharField(max_length=100)
-    job_role = models.ForeignKey(JobRole, null=True, on_delete=models.SET_NULL)
-    status = models.CharField(max_length=1, choices=STATUS, default='A')
-    admission_date = models.DateField(null=True, blank=True)
-    birthdate = models.DateField(null=True, blank=True)
-    projects = models.ManyToManyField(Project)
+    description = models.CharField(max_length=600)
+    start_date = models.DateField(null=True, blank=True)
+    end_date = models.DateField(null=True, blank=True)
+    status = models.CharField(max_length=1, choices=STATUS, default='C')
+    tecnologies = models.ManyToManyField(Technologie)
+    active = models.CharField(
+        max_length=1, choices=REGISTER_STATUS, default='A')
     creator = models.ForeignKey(
         User, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
 
+
+class NaverDateQuerySet(models.QuerySet):
+    def more_than(self, user, days):
+        return self.raw('SELECT * FROM core_naver WHERE COALESCE(end_date,CURRENT_DATE)-admission_date > '+str(days)+' and creator_id = '+str(user.id))
+
+    def equal(self, user, days):
+        return self.raw('SELECT * FROM core_naver WHERE COALESCE(end_date,CURRENT_DATE)-admission_date = '+str(days)+' and creator_id = '+str(user.id))
+
+    def less_than(self, user, days):
+        return self.raw('SELECT * FROM core_naver WHERE COALESCE(end_date,CURRENT_DATE)-admission_date < '+str(days)+' and creator_id = '+str(user.id))
+
+
+class NaverDateManager(models.Manager):
+    def get_queryset(self):
+        return NaverDateQuerySet(self.model, using=self._db)
+
+    def more_than(self, user, days):
+        return self.get_queryset().more_than(user, days)
+
+    def equal(self, user, days):
+        return self.get_queryset().equal(user, days)
+
+    def less_than(self, user, days):
+        return self.get_queryset().less_than(user, days)
+
+
+class Naver(models.Model):
+
+    #   need choices used to preserve deleted rows
+    STATUS = (
+        ('A', 'Actived'),
+        ('D', 'Deleted')
+    )
+
+    #   model fields that represent table
+    name = models.CharField(max_length=100)
+    job_role = models.ForeignKey(JobRole, null=True, on_delete=models.SET_NULL)
+    status = models.CharField(max_length=1, choices=STATUS, default='A')
+    admission_date = models.DateField(null=True, blank=True)
+    end_date = models.DateField(null=True, blank=True)
+    birthdate = models.DateField(null=True, blank=True)
+    projects = models.ManyToManyField(Project)
+    creator = models.ForeignKey(
+        User, null=True, blank=True, on_delete=models.CASCADE)
+
+    #   managers Definition
+    objects = models.Manager()
+    company_time = NaverDateManager()
+
+    def __str__(self):
+        return self.name
+
+    #   Property that provide the name format insted of id
     @property
     def job(self):
         # return str(self.pk)
-        return str(self.job_role)#JobRole.objects.get(pk=self.job_role).name
+        return str(self.job_role)  # JobRole.objects.get(pk=self.job_role).name

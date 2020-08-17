@@ -1,11 +1,27 @@
-#   restframework's imports
+#   my models that project uses
+from core.models import Naver, Project, Technologie, JobRole
+
+#   rest framework's dependecies
 from rest_framework.serializers import ModelSerializer
 
-#   my models that project uses
-from core.models import Naver, Project
 
-#   my serializers to implement Nested Relations
-from projects.api.serializers import ProjectSerializer
+class ProjectSerializer(ModelSerializer):
+
+    class Meta:
+        model = Project
+        fields = ['id', 'name']
+
+
+class JobSerializer(ModelSerializer):
+    class Meta:
+        model = JobRole
+        fields = ['id', 'name', 'description']
+
+
+class TecnologiesSerializer(ModelSerializer):
+    class Meta:
+        model = Technologie
+        fields = ['id', 'name']
 
 
 class NaverSerializer(ModelSerializer):
@@ -28,5 +44,13 @@ class DetailNaverSerializer(ModelSerializer):
     class Meta:
         model = Naver
         fields = (
-            'id', 'name', 'birthdate',  'admission_date',  'job', 'projects'
+            'id', 'name', 'birthdate',  'admission_date', 'end_date', 'job', 'projects'
         )
+
+
+class DetailProjectSerializer(ModelSerializer):
+    naver_set = NaverSerializer(many=True)
+
+    class Meta:
+        model = Project
+        fields = ['id', 'name', 'naver_set']
